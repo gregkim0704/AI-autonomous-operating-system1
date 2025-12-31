@@ -1,0 +1,36 @@
+# Node
+node_modules
+npm-debug.log
+dist
+
+# Python
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+*.egg
+*.egg-info
+dist
+build
+.venv
+venv
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+
+# Git
+.git
+.gitignore
+
+# Env
+.env
+.env.local
+
+# OS
+.DS_Store
+Thumbs.db
