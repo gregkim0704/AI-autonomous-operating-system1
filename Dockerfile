@@ -1,22 +1,19 @@
-# AI AOS Dashboard - Backend Dockerfile
-FROM python:3.11-slim
+# AI AOS Dashboard - Frontend Dockerfile
+FROM node:20-alpine
 
 WORKDIR /app
 
-# 시스템 의존성 설치
-RUN apt-get update && apt-get install -y \
-    curl \
-    && rm -rf /var/lib/apt/lists/*
+# 의존성 파일 복사
+COPY package*.json ./
 
-# Python 의존성 설치
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+# 의존성 설치
+RUN npm install
 
 # 소스 코드 복사
 COPY . .
 
 # 포트 노출
-EXPOSE 8000
+EXPOSE 3000
 
-# 서버 실행
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+# 개발 서버 실행
+CMD ["npm", "run", "dev", "--", "--host", "0.0.0.0"]
